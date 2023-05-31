@@ -1,0 +1,26 @@
+/****************************************************************/
+/*                             private                          */
+/****************************************************************/
+// private repo 
+// copied URI < 387084687389.dkr.ecr.us-east-2.amazonaws.com/my-app-repo-099:latest >
+// log into ECR
+   aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 387084687389.dkr.ecr.us-east-2.amazonaws.com
+// build docker images 
+   docker build -t my-app-repo-099 .
+// tag the docker images
+   docker tag my-app-repo-099:latest 387084687389.dkr.ecr.us-east-2.amazonaws.com/my-app-repo-099:latest
+// push to ecr 
+   docker push 387084687389.dkr.ecr.us-east-2.amazonaws.com/my-app-repo-099:latest
+
+/****************************************************************/
+/*                             public                           */
+/****************************************************************/
+
+   aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/g2p3s8z6
+
+   docker build -t my-app-repo-05312023 .
+
+   docker tag my-app-repo-05312023:latest public.ecr.aws/g2p3s8z6/my-app-repo-05312023:latest
+
+   docker push public.ecr.aws/g2p3s8z6/my-app-repo-05312023:latest
+
