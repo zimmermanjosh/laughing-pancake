@@ -13,4 +13,4 @@ phases:
       - docker push public.ecr.aws/g2p3s8z6/my-app-repo-05312023:latest
       - printf '[{"name":"myAppTask","imageUri":"%s"}]'public.ecr.aws/g2p3s8z6/my-app-repo-05312023:latest > imagedefinitions.json
 artifacts: 
-    files:imagedefinitions.json
+    files: imagedefinitions.json
