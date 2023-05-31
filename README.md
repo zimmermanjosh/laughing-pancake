@@ -1,0 +1,2 @@
+# laughing-pancake
+Amazon_dockerfile_autoGeneration
