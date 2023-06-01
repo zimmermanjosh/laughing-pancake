@@ -3,7 +3,8 @@ version: .01
 phases:
   pre_build:
     commands:
-      - ( aws ecr-public get-login --no-include-email --region us-east-1 )
+      #- ( aws ecr-public get-login --no-include-email --region us-east-1 )
+      - ( aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/g2p3s8z6 )
   build:
     commands:
       - docker build -t my-app-repo-05312023 .
@@ -12,5 +13,5 @@ phases:
     commands:
       - docker push public.ecr.aws/g2p3s8z6/my-app-repo-05312023:latest
       - printf '[{"name":"myAppTask","imageUri":"%s"}]'public.ecr.aws/g2p3s8z6/my-app-repo-05312023:latest > imagedefinitions.json
-artifacts: 
-    files: imagedefinitions.json
+artifacts:
+  files: imagedefinitions.json
